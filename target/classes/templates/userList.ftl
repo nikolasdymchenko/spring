@@ -2,24 +2,26 @@
 
 <@c.page>
 <b>List of users</b>
-<table>
+<table class="list-group">
     <thead>
     <tr>
-        <th>Name</th>
-        <th>Role</th>
-        <th></th>
+        <th scope="col">Name</th>
+        <th scope="col">Role</th>
+        <th scope="col"></th>
     </tr>
     </thead>
     <tbody>
     <#list users as user>
     <tr>
-        <td>${user.username}</td>
-        <td>
-            <#list user.roles as role>
-                ${role}<#sep>,
-            </#list>
-        </td>
-        <td><a href="/user/${user.id}">Edit user</a> </td>
+        <ul class="list-group">
+            <li class="list-group-item active"><td>${user.username}</td></li>
+
+                <#list user.roles as role>
+            <li class="list-group-item active"> ${role}<#sep>,</li>
+                </#list>
+
+        <li class="list-group-item active"><td><a href="/user/${user.id}">Edit user</a> </td></li>
+        </ul>
     </tr>
     </#list>
     </tbody>
